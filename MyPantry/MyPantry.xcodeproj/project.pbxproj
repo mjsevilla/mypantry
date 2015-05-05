@@ -82,9 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				610C094A1AF954C70061FDA3 /* AppDelegate.swift */,
-				610C094C1AF954C70061FDA3 /* GoShoppingViewController.swift */,
-				610C094E1AF954C70061FDA3 /* ScanItemViewController.swift */,
-				610C096C1AF963990061FDA3 /* PantryListViewController.swift */,
+				610C096E1AF9665C0061FDA3 /* View Controllers */,
 				610C09501AF954C70061FDA3 /* Main.storyboard */,
 				610C09531AF954C70061FDA3 /* Images.xcassets */,
 				610C09551AF954C70061FDA3 /* LaunchScreen.xib */,
@@ -116,6 +114,16 @@
 				610C09611AF954C70061FDA3 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		610C096E1AF9665C0061FDA3 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				610C096C1AF963990061FDA3 /* PantryListViewController.swift */,
+				610C094C1AF954C70061FDA3 /* GoShoppingViewController.swift */,
+				610C094E1AF954C70061FDA3 /* ScanItemViewController.swift */,
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
