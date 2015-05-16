@@ -8,13 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		610C094B1AF954C70061FDA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610C094A1AF954C70061FDA3 /* AppDelegate.swift */; };
-		610C094D1AF954C70061FDA3 /* GoShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610C094C1AF954C70061FDA3 /* GoShoppingViewController.swift */; };
+		610C094D1AF954C70061FDA3 /* PrepShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610C094C1AF954C70061FDA3 /* PrepShoppingListViewController.swift */; };
 		610C094F1AF954C70061FDA3 /* ScanItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610C094E1AF954C70061FDA3 /* ScanItemViewController.swift */; };
 		610C09521AF954C70061FDA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 610C09501AF954C70061FDA3 /* Main.storyboard */; };
 		610C09541AF954C70061FDA3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610C09531AF954C70061FDA3 /* Images.xcassets */; };
 		610C09571AF954C70061FDA3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 610C09551AF954C70061FDA3 /* LaunchScreen.xib */; };
 		610C09631AF954C70061FDA3 /* MyPantryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610C09621AF954C70061FDA3 /* MyPantryTests.swift */; };
 		610C096D1AF963990061FDA3 /* PantryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610C096C1AF963990061FDA3 /* PantryListViewController.swift */; };
+		61CF8E051B06BA64005725A0 /* RSCode39Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF41B06BA64005725A0 /* RSCode39Generator.swift */; };
+		61CF8E061B06BA64005725A0 /* RSCode39Mod43Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF51B06BA64005725A0 /* RSCode39Mod43Generator.swift */; };
+		61CF8E071B06BA64005725A0 /* RSCode93Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF61B06BA64005725A0 /* RSCode93Generator.swift */; };
+		61CF8E081B06BA64005725A0 /* RSCode128Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF71B06BA64005725A0 /* RSCode128Generator.swift */; };
+		61CF8E091B06BA64005725A0 /* RSCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF81B06BA64005725A0 /* RSCodeGenerator.swift */; };
+		61CF8E0A1B06BA64005725A0 /* RSCodeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF91B06BA64005725A0 /* RSCodeLayer.swift */; };
+		61CF8E0B1B06BA64005725A0 /* RSCodeReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DFA1B06BA64005725A0 /* RSCodeReaderViewController.swift */; };
+		61CF8E0C1B06BA64005725A0 /* RSCornersLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DFB1B06BA64005725A0 /* RSCornersLayer.swift */; };
+		61CF8E0D1B06BA64005725A0 /* RSEANGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DFC1B06BA64005725A0 /* RSEANGenerator.swift */; };
+		61CF8E0E1B06BA64005725A0 /* RSExtendedCode39Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DFD1B06BA64005725A0 /* RSExtendedCode39Generator.swift */; };
+		61CF8E0F1B06BA64005725A0 /* RSFocusMarkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DFE1B06BA64005725A0 /* RSFocusMarkLayer.swift */; };
+		61CF8E101B06BA64005725A0 /* RSITF14Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DFF1B06BA64005725A0 /* RSITF14Generator.swift */; };
+		61CF8E111B06BA64005725A0 /* RSITFGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E001B06BA64005725A0 /* RSITFGenerator.swift */; };
+		61CF8E121B06BA64005725A0 /* RSUnifiedCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E011B06BA64005725A0 /* RSUnifiedCodeGenerator.swift */; };
+		61CF8E131B06BA64005725A0 /* RSUPCEGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E021B06BA64005725A0 /* RSUPCEGenerator.swift */; };
+		61CF8E141B06BA64005725A0 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E031B06BA64005725A0 /* StringExtension.swift */; };
+		61CF8E151B06BA64005725A0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E041B06BA64005725A0 /* UIColorExtension.swift */; };
+		61CF8E171B06BDFD005725A0 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E161B06BDFD005725A0 /* AddItemViewController.swift */; };
+		61CF8E191B0720E1005725A0 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E181B0720E1005725A0 /* ShoppingListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +50,7 @@
 		610C09451AF954C70061FDA3 /* MyPantry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyPantry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		610C09491AF954C70061FDA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		610C094A1AF954C70061FDA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		610C094C1AF954C70061FDA3 /* GoShoppingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoShoppingViewController.swift; sourceTree = "<group>"; };
+		610C094C1AF954C70061FDA3 /* PrepShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrepShoppingListViewController.swift; sourceTree = "<group>"; };
 		610C094E1AF954C70061FDA3 /* ScanItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanItemViewController.swift; sourceTree = "<group>"; };
 		610C09511AF954C70061FDA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		610C09531AF954C70061FDA3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -40,6 +59,25 @@
 		610C09611AF954C70061FDA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		610C09621AF954C70061FDA3 /* MyPantryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPantryTests.swift; sourceTree = "<group>"; };
 		610C096C1AF963990061FDA3 /* PantryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryListViewController.swift; sourceTree = "<group>"; };
+		61CF8DF41B06BA64005725A0 /* RSCode39Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode39Generator.swift; sourceTree = "<group>"; };
+		61CF8DF51B06BA64005725A0 /* RSCode39Mod43Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode39Mod43Generator.swift; sourceTree = "<group>"; };
+		61CF8DF61B06BA64005725A0 /* RSCode93Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode93Generator.swift; sourceTree = "<group>"; };
+		61CF8DF71B06BA64005725A0 /* RSCode128Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode128Generator.swift; sourceTree = "<group>"; };
+		61CF8DF81B06BA64005725A0 /* RSCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCodeGenerator.swift; sourceTree = "<group>"; };
+		61CF8DF91B06BA64005725A0 /* RSCodeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCodeLayer.swift; sourceTree = "<group>"; };
+		61CF8DFA1B06BA64005725A0 /* RSCodeReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCodeReaderViewController.swift; sourceTree = "<group>"; };
+		61CF8DFB1B06BA64005725A0 /* RSCornersLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCornersLayer.swift; sourceTree = "<group>"; };
+		61CF8DFC1B06BA64005725A0 /* RSEANGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSEANGenerator.swift; sourceTree = "<group>"; };
+		61CF8DFD1B06BA64005725A0 /* RSExtendedCode39Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSExtendedCode39Generator.swift; sourceTree = "<group>"; };
+		61CF8DFE1B06BA64005725A0 /* RSFocusMarkLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSFocusMarkLayer.swift; sourceTree = "<group>"; };
+		61CF8DFF1B06BA64005725A0 /* RSITF14Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSITF14Generator.swift; sourceTree = "<group>"; };
+		61CF8E001B06BA64005725A0 /* RSITFGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSITFGenerator.swift; sourceTree = "<group>"; };
+		61CF8E011B06BA64005725A0 /* RSUnifiedCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSUnifiedCodeGenerator.swift; sourceTree = "<group>"; };
+		61CF8E021B06BA64005725A0 /* RSUPCEGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSUPCEGenerator.swift; sourceTree = "<group>"; };
+		61CF8E031B06BA64005725A0 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		61CF8E041B06BA64005725A0 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		61CF8E161B06BDFD005725A0 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		61CF8E181B0720E1005725A0 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +124,7 @@
 				610C09501AF954C70061FDA3 /* Main.storyboard */,
 				610C09531AF954C70061FDA3 /* Images.xcassets */,
 				610C09551AF954C70061FDA3 /* LaunchScreen.xib */,
+				61CF8DF11B06BA06005725A0 /* Frameworks */,
 				610C09481AF954C70061FDA3 /* Supporting Files */,
 			);
 			path = MyPantry;
@@ -119,11 +158,53 @@
 		610C096E1AF9665C0061FDA3 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				61CF8E161B06BDFD005725A0 /* AddItemViewController.swift */,
 				610C096C1AF963990061FDA3 /* PantryListViewController.swift */,
-				610C094C1AF954C70061FDA3 /* GoShoppingViewController.swift */,
+				610C094C1AF954C70061FDA3 /* PrepShoppingListViewController.swift */,
 				610C094E1AF954C70061FDA3 /* ScanItemViewController.swift */,
+				61CF8E181B0720E1005725A0 /* ShoppingListViewController.swift */,
 			);
 			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		61CF8DF11B06BA06005725A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61CF8DF21B06BA25005725A0 /* RSBarcodes */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		61CF8DF21B06BA25005725A0 /* RSBarcodes */ = {
+			isa = PBXGroup;
+			children = (
+				61CF8DF31B06BA32005725A0 /* Source */,
+			);
+			name = RSBarcodes;
+			sourceTree = "<group>";
+		};
+		61CF8DF31B06BA32005725A0 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				61CF8DF41B06BA64005725A0 /* RSCode39Generator.swift */,
+				61CF8DF51B06BA64005725A0 /* RSCode39Mod43Generator.swift */,
+				61CF8DF61B06BA64005725A0 /* RSCode93Generator.swift */,
+				61CF8DF71B06BA64005725A0 /* RSCode128Generator.swift */,
+				61CF8DF81B06BA64005725A0 /* RSCodeGenerator.swift */,
+				61CF8DF91B06BA64005725A0 /* RSCodeLayer.swift */,
+				61CF8DFA1B06BA64005725A0 /* RSCodeReaderViewController.swift */,
+				61CF8DFB1B06BA64005725A0 /* RSCornersLayer.swift */,
+				61CF8DFC1B06BA64005725A0 /* RSEANGenerator.swift */,
+				61CF8DFD1B06BA64005725A0 /* RSExtendedCode39Generator.swift */,
+				61CF8DFE1B06BA64005725A0 /* RSFocusMarkLayer.swift */,
+				61CF8DFF1B06BA64005725A0 /* RSITF14Generator.swift */,
+				61CF8E001B06BA64005725A0 /* RSITFGenerator.swift */,
+				61CF8E011B06BA64005725A0 /* RSUnifiedCodeGenerator.swift */,
+				61CF8E021B06BA64005725A0 /* RSUPCEGenerator.swift */,
+				61CF8E031B06BA64005725A0 /* StringExtension.swift */,
+				61CF8E041B06BA64005725A0 /* UIColorExtension.swift */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +256,7 @@
 				TargetAttributes = {
 					610C09441AF954C70061FDA3 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = PY9957M84G;
 					};
 					610C095B1AF954C70061FDA3 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -226,10 +308,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61CF8E121B06BA64005725A0 /* RSUnifiedCodeGenerator.swift in Sources */,
+				61CF8E111B06BA64005725A0 /* RSITFGenerator.swift in Sources */,
+				61CF8E061B06BA64005725A0 /* RSCode39Mod43Generator.swift in Sources */,
+				61CF8E091B06BA64005725A0 /* RSCodeGenerator.swift in Sources */,
+				61CF8E191B0720E1005725A0 /* ShoppingListViewController.swift in Sources */,
 				610C094F1AF954C70061FDA3 /* ScanItemViewController.swift in Sources */,
+				61CF8E131B06BA64005725A0 /* RSUPCEGenerator.swift in Sources */,
+				61CF8E0D1B06BA64005725A0 /* RSEANGenerator.swift in Sources */,
 				610C094B1AF954C70061FDA3 /* AppDelegate.swift in Sources */,
+				61CF8E141B06BA64005725A0 /* StringExtension.swift in Sources */,
+				61CF8E081B06BA64005725A0 /* RSCode128Generator.swift in Sources */,
+				61CF8E0E1B06BA64005725A0 /* RSExtendedCode39Generator.swift in Sources */,
 				610C096D1AF963990061FDA3 /* PantryListViewController.swift in Sources */,
-				610C094D1AF954C70061FDA3 /* GoShoppingViewController.swift in Sources */,
+				61CF8E101B06BA64005725A0 /* RSITF14Generator.swift in Sources */,
+				61CF8E051B06BA64005725A0 /* RSCode39Generator.swift in Sources */,
+				61CF8E071B06BA64005725A0 /* RSCode93Generator.swift in Sources */,
+				610C094D1AF954C70061FDA3 /* PrepShoppingListViewController.swift in Sources */,
+				61CF8E0A1B06BA64005725A0 /* RSCodeLayer.swift in Sources */,
+				61CF8E0B1B06BA64005725A0 /* RSCodeReaderViewController.swift in Sources */,
+				61CF8E151B06BA64005725A0 /* UIColorExtension.swift in Sources */,
+				61CF8E0F1B06BA64005725A0 /* RSFocusMarkLayer.swift in Sources */,
+				61CF8E0C1B06BA64005725A0 /* RSCornersLayer.swift in Sources */,
+				61CF8E171B06BDFD005725A0 /* AddItemViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MyPantry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -366,6 +468,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MyPantry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
