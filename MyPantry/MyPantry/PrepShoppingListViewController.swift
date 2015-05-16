@@ -13,6 +13,8 @@ class PrepShoppingListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        println("======PrepShoppingListViewController======")
+        println("Here, the user will scan through all their items in each category and specify which items in particular the user will go out and buy for a given shopping trip.")
     }
 
     @IBAction func goShop(sender: AnyObject) {

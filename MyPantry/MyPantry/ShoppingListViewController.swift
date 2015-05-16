@@ -13,7 +13,9 @@ class ShoppingListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("This view controller displays the user's desired shopping list")
+        println("======ShoppingListViewController======")
+        println("This view controller displays the user's desired shopping list for that shopping trip.")
+        println("Here the user will be able to cross of items as they physically purchase them.")
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

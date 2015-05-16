@@ -11,23 +11,34 @@ import AVFoundation
 
 class ScanItemViewController: RSCodeReaderViewController {
 
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var toggle: UIBarButtonItem!
     var barcodeVal: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println("======ScanItemViewController======")
+        println("This tab allows users to scan an item's barcode to easily add an item to a category.")
+        println("Go ahead! Scan the barcode of something!!")
+        
         self.focusMarkLayer.strokeColor = UIColor.clearColor().CGColor
         self.cornersLayer.strokeColor = UIColor.redColor().CGColor
+        self.tabBarController?.tabBar.hidden = false
         
         self.tapHandler = { point in
-            println(point)
+            println("You focused at location: \(point)")
         }
         self.barcodesHandler = { barcodes in
-            println("Barcode found: type=\(barcodes[0].type) value=\(barcodes[0].stringValue)")
-            self.barcodeVal = barcodes[0].stringValue
-            println("This is where a barcode is scanned and segues to adding an item")
-            self.performSegueWithIdentifier("presentAddItem", sender: self)
+            if barcodes[0].stringValue != nil {
+                println("Barcode found: type=\(barcodes[0].type) value=\(barcodes[0].stringValue)")
+                self.barcodeVal = barcodes[0].stringValue
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.indicator.startAnimating()
+                    self.session.stopRunning()
+                    self.performSegueWithIdentifier("presentAddItem", sender: self)
+                })
+            }
         }
         
         let types = NSMutableArray(array: self.output.availableMetadataObjectTypes)
@@ -45,14 +56,15 @@ class ScanItemViewController: RSCodeReaderViewController {
     }
     
     @IBAction func toggleLight(sender: AnyObject) {
+        println("You toggled the flash for scanning items in low-light conditions. Sneaky you!")
         self.toggleTorch()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "presentAddItem" {
             if let destVC = segue.destinationViewController as? AddItemViewController {
+                self.indicator.stopAnimating()
                 destVC.barcodeVal = self.barcodeVal
-                println("Reaching prepareForSegue()")
             }
         }
     }

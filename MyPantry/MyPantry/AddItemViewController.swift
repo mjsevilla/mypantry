@@ -14,6 +14,11 @@ class AddItemViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("Here is where you add the scanned item to a category")
+        println("======AddItemViewController======")
+        println("Success! You have scanned in an item. Here is where we would display the item's information before allowing the user to select which category to add said item into.")
+    }
+    
+    @IBAction func addItemToCategory(sender: AnyObject) {
+        println("You have reviewed the item and selected which category you wish to add this item to.")
     }
 }

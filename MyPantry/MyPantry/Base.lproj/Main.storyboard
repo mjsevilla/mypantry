@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--Prep Shopping LIst-->
+        <!--Prep Shopping List-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="PrepShoppingListViewController" customModule="MyPantry" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,30 +15,12 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is where the user selects what items" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3X-PY-GtC">
-                                <rect key="frame" x="141" y="149" width="319" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" of their list they will go &amp; buy today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vh-p4-KOA">
-                                <rect key="frame" x="164" y="204" width="273" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="I3X-PY-GtC" secondAttribute="centerX" constant="-0.5" id="14y-cS-FHm"/>
-                            <constraint firstAttribute="centerY" secondItem="I3X-PY-GtC" secondAttribute="centerY" constant="140.5" id="4kF-s8-luQ"/>
-                            <constraint firstAttribute="centerX" secondItem="6vh-p4-KOA" secondAttribute="centerX" id="FCf-X6-lQ8"/>
-                            <constraint firstAttribute="centerY" secondItem="6vh-p4-KOA" secondAttribute="centerY" constant="85.5" id="sDf-ie-a5R"/>
-                        </constraints>
+                        <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Prep Shopping LIst" id="40P-9c-blb">
+                    <navigationItem key="navigationItem" title="Prep Shopping List" id="40P-9c-blb">
                         <barButtonItem key="rightBarButtonItem" title="Go Shop" id="hko-4i-AFA">
+                            <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="goShop:" destination="9pv-A4-QxB" id="eIg-Od-aY1"/>
                                 <segue destination="THF-kq-MrN" kind="show" identifier="presentShoppingList" id="Ndh-5d-DcX"/>
@@ -71,12 +53,16 @@
                             <outlet property="delegate" destination="THF-kq-MrN" id="pok-kP-CMw"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="gxR-pv-106"/>
+                    </toolbarItems>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRu-qe-Ykg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2305" y="0.0"/>
         </scene>
-        <!--Scan an Item-->
+        <!--Scan Item-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="ScanItemViewController" customModule="MyPantry" customModuleProvider="target" sceneMemberID="viewController">
@@ -87,16 +73,28 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HUH-FO-aaZ">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HUH-FO-aaZ" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="217" id="Sxe-Y2-QZe"/>
+                            <constraint firstItem="HUH-FO-aaZ" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="c2p-tO-9eM"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Scan an Item" id="Bie-Fi-MtS">
-                        <barButtonItem key="leftBarButtonItem" title="Light" id="GqH-oi-tFb">
+                    <navigationItem key="navigationItem" title="Scan Item" id="Bie-Fi-MtS">
+                        <barButtonItem key="leftBarButtonItem" image="flash" id="GqH-oi-tFb">
+                            <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="toggleLight:" destination="8rJ-Kc-sve" id="hcb-f6-PFB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="indicator" destination="HUH-FO-aaZ" id="gtq-Gz-Ztu"/>
                         <outlet property="toggle" destination="GqH-oi-tFb" id="3gF-cs-yNF"/>
                         <segue destination="K4A-97-GaV" kind="show" identifier="presentAddItem" id="qVo-MV-E9P"/>
                     </connections>
@@ -105,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="1570" y="740"/>
         </scene>
-        <!--Add Item View Controller-->
+        <!--Add Item-->
         <scene sceneID="urG-KU-g59">
             <objects>
                 <viewController id="K4A-97-GaV" customClass="AddItemViewController" customModule="MyPantry" customModuleProvider="target" sceneMemberID="viewController">
@@ -117,22 +115,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="btJ-Cn-H21"/>
+                    <navigationItem key="navigationItem" title="Add Item" id="btJ-Cn-H21">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="MDS-Jz-WbU">
+                            <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="addItemToCategory:" destination="K4A-97-GaV" id="oJ2-7X-vMi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dT3-wV-6cL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2354" y="740"/>
+            <point key="canvasLocation" x="2305" y="740"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
                 <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="barTintColor" red="0.22352941179999999" green="0.22352941179999999" blue="0.22352941179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.11372549019607843" green="0.16862745098039217" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.40000000000000002" green="0.38431372549999998" blue="0.37254901959999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="Rbm-C1-R3H" kind="relationship" relationship="viewControllers" id="nxP-ZR-1vz"/>
@@ -168,7 +175,7 @@
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0ls-Cw-vbb">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -187,7 +194,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Pantry" id="Xdh-mh-hj4">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="Zfo-Jw-mqz">
+                        <barButtonItem key="rightBarButtonItem" title="New" id="Zfo-Jw-mqz">
+                            <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="addCategory:" destination="ieb-RU-Je4" id="o80-VV-8MO"/>
                             </connections>
@@ -201,15 +209,20 @@
             </objects>
             <point key="canvasLocation" x="1570" y="-688"/>
         </scene>
-        <!--Pantry List-->
+        <!--Navigation Controller-->
         <scene sceneID="Kbs-m9-Xg3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rbm-C1-R3H" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pantry List" image="list" id="0Fa-Ax-cyI"/>
+                    <tabBarItem key="tabBarItem" title="" image="list" id="0Fa-Ax-cyI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uj6-bh-EcI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.72156862749999995" green="0.78039215689999997" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                            <color key="textColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -220,15 +233,20 @@
             </objects>
             <point key="canvasLocation" x="750" y="-688"/>
         </scene>
-        <!--Go Shopping-->
+        <!--Navigation Controller-->
         <scene sceneID="mAx-nE-9OG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ll2-jx-toA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Go Shopping" image="cart" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="" image="cart" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KZt-eI-M9S">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.72156862749999995" green="0.78039215689999997" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                            <color key="textColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -239,15 +257,20 @@
             </objects>
             <point key="canvasLocation" x="750" y="0.0"/>
         </scene>
-        <!--Scan Item-->
+        <!--Navigation Controller-->
         <scene sceneID="dq7-sb-36A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Thz-Hb-cwm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Scan Item" image="barcode" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="" image="barcode" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rQx-If-22i">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.72156862749999995" green="0.78039215689999997" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                            <color key="textColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -262,6 +285,7 @@
     <resources>
         <image name="barcode" width="30" height="30"/>
         <image name="cart" width="30" height="30"/>
+        <image name="flash" width="30" height="30"/>
         <image name="list" width="30" height="30"/>
     </resources>
 </document>
