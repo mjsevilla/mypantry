@@ -34,6 +34,8 @@
 		61CF8E151B06BA64005725A0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E041B06BA64005725A0 /* UIColorExtension.swift */; };
 		61CF8E171B06BDFD005725A0 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E161B06BDFD005725A0 /* AddItemViewController.swift */; };
 		61CF8E191B0720E1005725A0 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E181B0720E1005725A0 /* ShoppingListViewController.swift */; };
+		61DA8EF11B16833900ED37B7 /* ModelObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DA8EF01B16833900ED37B7 /* ModelObjects.swift */; };
+		61DA8EF41B16885B00ED37B7 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DA8EF31B16885B00ED37B7 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		61CF8E041B06BA64005725A0 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		61CF8E161B06BDFD005725A0 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		61CF8E181B0720E1005725A0 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
+		61DA8EF01B16833900ED37B7 /* ModelObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObjects.swift; sourceTree = "<group>"; };
+		61DA8EF31B16885B00ED37B7 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				610C094A1AF954C70061FDA3 /* AppDelegate.swift */,
+				61DA8EF21B16834100ED37B7 /* Custom Classes */,
 				610C096E1AF9665C0061FDA3 /* View Controllers */,
 				610C09501AF954C70061FDA3 /* Main.storyboard */,
 				610C09531AF954C70061FDA3 /* Images.xcassets */,
@@ -160,6 +165,7 @@
 			children = (
 				61CF8E161B06BDFD005725A0 /* AddItemViewController.swift */,
 				610C096C1AF963990061FDA3 /* PantryListViewController.swift */,
+				61DA8EF31B16885B00ED37B7 /* CategoryViewController.swift */,
 				610C094C1AF954C70061FDA3 /* PrepShoppingListViewController.swift */,
 				610C094E1AF954C70061FDA3 /* ScanItemViewController.swift */,
 				61CF8E181B0720E1005725A0 /* ShoppingListViewController.swift */,
@@ -205,6 +211,14 @@
 				61CF8E041B06BA64005725A0 /* UIColorExtension.swift */,
 			);
 			name = Source;
+			sourceTree = "<group>";
+		};
+		61DA8EF21B16834100ED37B7 /* Custom Classes */ = {
+			isa = PBXGroup;
+			children = (
+				61DA8EF01B16833900ED37B7 /* ModelObjects.swift */,
+			);
+			name = "Custom Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61DA8EF11B16833900ED37B7 /* ModelObjects.swift in Sources */,
 				61CF8E121B06BA64005725A0 /* RSUnifiedCodeGenerator.swift in Sources */,
 				61CF8E111B06BA64005725A0 /* RSITFGenerator.swift in Sources */,
 				61CF8E061B06BA64005725A0 /* RSCode39Mod43Generator.swift in Sources */,
@@ -327,6 +342,7 @@
 				610C094D1AF954C70061FDA3 /* PrepShoppingListViewController.swift in Sources */,
 				61CF8E0A1B06BA64005725A0 /* RSCodeLayer.swift in Sources */,
 				61CF8E0B1B06BA64005725A0 /* RSCodeReaderViewController.swift in Sources */,
+				61DA8EF41B16885B00ED37B7 /* CategoryViewController.swift in Sources */,
 				61CF8E151B06BA64005725A0 /* UIColorExtension.swift in Sources */,
 				61CF8E0F1B06BA64005725A0 /* RSFocusMarkLayer.swift in Sources */,
 				61CF8E0C1B06BA64005725A0 /* RSCornersLayer.swift in Sources */,

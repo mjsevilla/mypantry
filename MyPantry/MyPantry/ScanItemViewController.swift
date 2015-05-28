@@ -11,6 +11,7 @@ import AVFoundation
 
 class ScanItemViewController: RSCodeReaderViewController {
 
+    @IBOutlet weak var flashBtn: UIBarButtonItem!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var toggle: UIBarButtonItem!
     var barcodeVal: String?
@@ -22,7 +23,7 @@ class ScanItemViewController: RSCodeReaderViewController {
         println("This tab allows users to scan an item's barcode to easily add an item to a category.")
         println("Go ahead! Scan the barcode of something!!")
         
-        self.focusMarkLayer.strokeColor = UIColor.clearColor().CGColor
+        self.focusMarkLayer.strokeColor = UIColor.redColor().CGColor
         self.cornersLayer.strokeColor = UIColor.redColor().CGColor
         self.tabBarController?.tabBar.hidden = false
         
@@ -58,6 +59,9 @@ class ScanItemViewController: RSCodeReaderViewController {
     @IBAction func toggleLight(sender: AnyObject) {
         println("You toggled the flash for scanning items in low-light conditions. Sneaky you!")
         self.toggleTorch()
+        let on = UIImage(named: "flash2")
+        let off = UIImage(named: "flash")
+        flashBtn.image = (flashBtn.image == on) ? off : on
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

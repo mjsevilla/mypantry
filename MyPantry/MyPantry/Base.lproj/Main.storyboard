@@ -53,9 +53,7 @@
                             <outlet property="delegate" destination="THF-kq-MrN" id="pok-kP-CMw"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="gxR-pv-106"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRu-qe-Ykg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -86,7 +84,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Scan Item" id="Bie-Fi-MtS">
-                        <barButtonItem key="leftBarButtonItem" image="flash" id="GqH-oi-tFb">
+                        <barButtonItem key="rightBarButtonItem" image="flash" id="GqH-oi-tFb">
                             <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="toggleLight:" destination="8rJ-Kc-sve" id="hcb-f6-PFB"/>
@@ -94,6 +92,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="flashBtn" destination="GqH-oi-tFb" id="mhU-hd-WOB"/>
                         <outlet property="indicator" destination="HUH-FO-aaZ" id="gtq-Gz-Ztu"/>
                         <outlet property="toggle" destination="GqH-oi-tFb" id="3gF-cs-yNF"/>
                         <segue destination="K4A-97-GaV" kind="show" identifier="presentAddItem" id="qVo-MV-E9P"/>
@@ -101,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1570" y="740"/>
+            <point key="canvasLocation" x="1576" y="756"/>
         </scene>
         <!--Add Item-->
         <scene sceneID="urG-KU-g59">
@@ -167,7 +166,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" textLabel="0ls-Cw-vbb" style="IBUITableViewCellStyleDefault" id="0kL-nC-vXg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" textLabel="0ls-Cw-vbb" style="IBUITableViewCellStyleDefault" id="0kL-nC-vXg" customClass="CategoryCell" customModule="MyPantry" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0kL-nC-vXg" id="caR-gh-2N6">
@@ -193,8 +192,8 @@
                             <constraint firstItem="YBW-nN-pmk" firstAttribute="bottom" secondItem="U8x-p9-kWm" secondAttribute="top" id="jQk-zJ-xtU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My Pantry" id="Xdh-mh-hj4">
-                        <barButtonItem key="rightBarButtonItem" title="New" id="Zfo-Jw-mqz">
+                    <navigationItem key="navigationItem" title="myPantry" id="Xdh-mh-hj4">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zfo-Jw-mqz">
                             <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="addCategory:" destination="ieb-RU-Je4" id="o80-VV-8MO"/>
@@ -203,21 +202,65 @@
                     </navigationItem>
                     <connections>
                         <outlet property="categoryTable" destination="YBW-nN-pmk" id="Da7-QA-cTZ"/>
+                        <segue destination="Wfa-a9-1d6" kind="show" identifier="presentCategory" id="Kgb-Sx-V0k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYf-uz-Iga" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1570" y="-688"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Category View Controller-->
+        <scene sceneID="MMc-Jt-0K3">
+            <objects>
+                <tableViewController id="Wfa-a9-1d6" customClass="CategoryViewController" customModule="MyPantry" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" id="D77-qP-soK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemCell" textLabel="fRb-3R-BDi" style="IBUITableViewCellStyleDefault" id="8qp-q5-QfD">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8qp-q5-QfD" id="KLa-mu-bGG">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fRb-3R-BDi">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Wfa-a9-1d6" id="hIW-BC-TQK"/>
+                            <outlet property="delegate" destination="Wfa-a9-1d6" id="cg6-Tm-bAS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="eIB-Vq-Ag7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lxP-gm-AgJ">
+                            <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="8rJ-Kc-sve" kind="show" identifier="presentScan" id="Pdn-np-KCV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tdj-9h-mgY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2305" y="-688"/>
+        </scene>
+        <!--ListNavVC-->
         <scene sceneID="Kbs-m9-Xg3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rbm-C1-R3H" sceneMemberID="viewController">
+                <navigationController title="ListNavVC" automaticallyAdjustsScrollViewInsets="NO" id="Rbm-C1-R3H" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="list" id="0Fa-Ax-cyI"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="uj6-bh-EcI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.11372549019607843" green="0.16862745098039217" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.72156862749999995" green="0.78039215689999997" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
@@ -233,15 +276,16 @@
             </objects>
             <point key="canvasLocation" x="750" y="-688"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--GoShopNavVC-->
         <scene sceneID="mAx-nE-9OG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ll2-jx-toA" sceneMemberID="viewController">
+                <navigationController title="GoShopNavVC" automaticallyAdjustsScrollViewInsets="NO" id="ll2-jx-toA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="cart" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="KZt-eI-M9S">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.72156862749999995" green="0.78039215689999997" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
@@ -257,15 +301,16 @@
             </objects>
             <point key="canvasLocation" x="750" y="0.0"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--ScanItemNavVC-->
         <scene sceneID="dq7-sb-36A">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Thz-Hb-cwm" sceneMemberID="viewController">
+                <navigationController title="ScanItemNavVC" automaticallyAdjustsScrollViewInsets="NO" id="Thz-Hb-cwm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="barcode" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rQx-If-22i">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.1137254902" green="0.16862745100000001" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.72156862749999995" green="0.78039215689999997" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
@@ -288,4 +333,7 @@
         <image name="flash" width="30" height="30"/>
         <image name="list" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Pdn-np-KCV"/>
+    </inferredMetricsTieBreakers>
 </document>
