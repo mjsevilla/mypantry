@@ -33,11 +33,19 @@ class ScanItemViewController: RSCodeReaderViewController {
         self.barcodesHandler = { barcodes in
             if barcodes[0].stringValue != nil {
                 println("Barcode found: type=\(barcodes[0].type) value=\(barcodes[0].stringValue)")
-                self.barcodeVal = barcodes[0].stringValue
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.indicator.startAnimating()
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.indicator.startAnimating()
+                    })
+                    
+                    self.barcodeVal = barcodes[0].stringValue
                     self.session.stopRunning()
-                    self.performSegueWithIdentifier("presentAddItem", sender: self)
+                    
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.indicator.stopAnimating()
+                        self.performSegueWithIdentifier("presentAddItem", sender: self)
+                    })
                 })
             }
         }
@@ -67,7 +75,6 @@ class ScanItemViewController: RSCodeReaderViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "presentAddItem" {
             if let destVC = segue.destinationViewController as? AddItemViewController {
-                self.indicator.stopAnimating()
                 destVC.barcodeVal = self.barcodeVal
             }
         }
