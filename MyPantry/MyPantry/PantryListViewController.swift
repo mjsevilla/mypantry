@@ -22,9 +22,10 @@ class PantryListViewController: UIViewController, UITableViewDelegate, UITableVi
         categoryTable.dataSource = self
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         self.fetchCategories()
+        self.categoryTable.reloadData()
     }
     
     // fetch categories from core data
@@ -56,8 +57,14 @@ class PantryListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         addAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelAddCategory))
         addAlert.addAction(UIAlertAction(title: "Add", style: .Default, handler: { (UIAlertAction) in
-            println("Added category: \(self.categoryTextField.text)")
-            self.saveCategory(self.categoryTextField.text)
+            var catName = self.categoryTextField.text
+            for category in self.categories {
+                if catName == category.valueForKey("name") as! String {
+                    catName = "\(catName) copy"
+                    break
+                }
+            }
+            self.saveCategory(catName)
             self.categoryTable.reloadData()
             self.emptyView.hidden = true
         }))

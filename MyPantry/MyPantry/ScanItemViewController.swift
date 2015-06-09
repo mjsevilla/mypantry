@@ -75,8 +75,10 @@ class ScanItemViewController: RSCodeReaderViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "presentAddItem" {
-            if let destVC = segue.destinationViewController as? AddItemViewController {
-                destVC.barcodeVal = self.barcodeVal
+            if let navVC = segue.destinationViewController as? UINavigationController {
+                if let destVC = navVC.topViewController as? AddItemViewController {
+                    destVC.barcodeVal = self.barcodeVal
+                }
             }
         }
     }

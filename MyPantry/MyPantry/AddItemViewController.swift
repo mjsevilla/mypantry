@@ -15,17 +15,27 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UIPickerView
     @IBOutlet weak var itemQuantity: UITextField!
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var categoryPicker: UIPickerView!
+    @IBOutlet weak var categoryLabel: UILabel!
+    var categories = [NSManagedObject]()
+    var selectedCategory: NSManagedObject!
+    var categoryTextField: UITextField!
     var origPrice = ""
     var barcodeVal: String?
-    let pickerData = ["fruit", "veggies", "frozens"]
+    var pickerData: [String] = []
+    var tapGest: UITapGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.fetchCategories("")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
         itemQuantity.delegate = self
         origPrice = itemPrice.text!
         categoryPicker.dataSource = self
         categoryPicker.delegate = self
+        categoryPicker.hidden = true
+        tapGest = UITapGestureRecognizer(target: self, action: "selectCategory:")
+        tapGest.numberOfTapsRequired = 1
+        categoryLabel.addGestureRecognizer(tapGest)
     }
     
     func keyboardWillHide(sender: NSNotification) {
@@ -45,7 +55,13 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UIPickerView
     }
     
     @IBAction func addItemToCategory(sender: AnyObject) {
-        println("You have reviewed the item and selected which category you wish to add this item to.")
+//        selectedCategory.set
+        performSegueWithIdentifier("presentCategoryFromAdd", sender: self)
+    }
+    
+    func selectCategory(sender: AnyObject) {
+        categoryPicker.hidden = false
+        categoryPicker.reloadAllComponents()
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -61,10 +77,101 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UIPickerView
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        myLabel.text = pickerData[row]
+        if pickerData[row] == "Add New.." {
+            self.addNewCategory()
+        }
+        else {
+            categoryLabel.text = pickerData[row]
+        }
+        self.categoryPicker.hidden = true
+        self.fetchCategories(categoryLabel.text!)
+    }
+    
+    // add category to table view
+    func addNewCategory() {
+        let addAlert = UIAlertController(title: "Add New Category", message: nil, preferredStyle: .Alert)
+        
+        addAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: cancelAddCategory))
+        addAlert.addAction(UIAlertAction(title: "Add", style: .Default, handler: { (UIAlertAction) in
+            var catName = self.categoryTextField.text
+            for category in self.pickerData {
+                if catName == category {
+                    catName = "\(catName) copy"
+                    break
+                }
+            }
+            self.saveNewCategory(catName)
+            self.categoryLabel.text = catName
+        }))
+        addAlert.addTextFieldWithConfigurationHandler(configTextField)
+        self.presentViewController(addAlert, animated: true, completion: nil)
+    }
+    
+    // save category to core data
+    func saveNewCategory(name: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let entity =  NSEntityDescription.entityForName("Category", inManagedObjectContext: managedContext)
+        let category = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+        var error: NSError?
+        
+        category.setValue(name, forKey: "name")
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+        else {
+            categories.append(category)
+            self.fetchCategories("")
+        }
+    }
+    
+    func configTextField(textField: UITextField!) {
+        textField.placeholder = "ie. Dairy, Veggies, etc."
+        textField.autocapitalizationType = .Words
+        textField.autocorrectionType = .Default
+        categoryTextField = textField
+    }
+    
+    func cancelAddCategory(alertView: UIAlertAction!) {
+        println("Cancelled adding category!")
+    }
+    
+    // fetch categories from core data
+    func fetchCategories(nameToFetch: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        let fetchRequest = NSFetchRequest(entityName:"Category")
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        var error: NSError?
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        
+        if let results = fetchedResults {
+            categories = results
+            pickerData = []
+            for category in categories {
+                let catName = category.valueForKey("name") as! String
+                if nameToFetch == catName {
+                    selectedCategory = category
+                }
+                pickerData.append(catName)
+            }
+            pickerData.append("Add New..")
+        }
+        else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "presentCategoryFromAdd" {
+            if let destVC = segue.destinationViewController as? PantryListViewController {
+                
+            }
+        }
     }
 }
