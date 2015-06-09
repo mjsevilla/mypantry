@@ -125,7 +125,7 @@ class PantryListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = categoryTable.cellForRowAtIndexPath(indexPath) as! CategoryCell
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! CategoryCell
         
         performSegueWithIdentifier("presentCategory", sender: cell)
     }

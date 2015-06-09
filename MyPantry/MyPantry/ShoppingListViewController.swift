@@ -12,15 +12,10 @@ import CoreData
 
 class ShoppingListViewController: UITableViewController {
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("======ShoppingListViewController======")
-        println("This view controller displays the user's desired shopping list for that shopping trip.")
-        println("Here the user will be able to cross of items as they physically purchase them.")
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -29,11 +24,18 @@ class ShoppingListViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
+    // title of each section
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ""
+    }
+    
+    // number of different sections
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
     }
+    
 }

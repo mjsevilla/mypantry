@@ -11,26 +11,17 @@ import AVFoundation
 import CoreData
 
 class ScanItemViewController: RSCodeReaderViewController {
-
     @IBOutlet weak var flashBtn: UIBarButtonItem!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var toggle: UIBarButtonItem!
-    var barcodeVal: String?
+    var itemName = ""
+    var itemPrice = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        println("======ScanItemViewController======")
-        println("This tab allows users to scan an item's barcode to easily add an item to a category.")
-        println("Go ahead! Scan the barcode of something!!")
-        
         self.focusMarkLayer.strokeColor = UIColor.redColor().CGColor
         self.cornersLayer.strokeColor = UIColor.redColor().CGColor
         self.tabBarController?.tabBar.hidden = false
-        
-        self.tapHandler = { point in
-            println("You focused at location: \(point)")
-        }
         self.barcodesHandler = { barcodes in
             if barcodes[0].stringValue != nil {
                 println("Barcode found: type=\(barcodes[0].type) value=\(barcodes[0].stringValue)")
@@ -40,8 +31,7 @@ class ScanItemViewController: RSCodeReaderViewController {
                         self.indicator.startAnimating()
                     })
                     
-                    self.barcodeVal = barcodes[0].stringValue
-                    //put API here??
+                    self.semanticsAPICall(barcodes[0].stringValue.toInt()!)
                     self.session.stopRunning()
                     
                     dispatch_async(dispatch_get_main_queue(), {
@@ -56,7 +46,6 @@ class ScanItemViewController: RSCodeReaderViewController {
         types.removeObject(AVMetadataObjectTypeQRCode)
         self.output.metadataObjectTypes = NSArray(array: types) as [AnyObject]
         
-        // MARK: NOTE: If you layout views in storyboard, you should these 3 lines
         for subview in self.view.subviews {
             self.view.bringSubviewToFront(subview as! UIView)
         }
@@ -66,36 +55,36 @@ class ScanItemViewController: RSCodeReaderViewController {
         }
     }
     
-    func semanticAPICall(barcodeVal: Int) {
-        var urlString = "https://api.semantics3.com/test/v1/products?q={\"upc\":70411576937}"
-        var esc = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
-        var request = NSMutableURLRequest(URL: NSURL(string: esc!)!)
-        var response: NSURLResponse?
-        var error: NSErrorPointer = nil
+    func semanticsAPICall(barcodeVal: Int) {
+        let urlString = "https://api.semantics3.com/test/v1/products?q={\"upc\":\(barcodeVal)}"
+        let esc = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        let request = NSMutableURLRequest(URL: NSURL(string: esc!)!)
+        let response: NSURLResponse?
+        let error: NSErrorPointer = nil
         var err: NSError?
+        let session = NSURLSession.sharedSession()
         
         request.HTTPMethod = "GET"
         request.addValue("SEM32047A91FE30E73559F6FD1C695F2727B", forHTTPHeaderField: "api_key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        var session = NSURLSession.sharedSession()
         
-        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
-            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            let strData = NSString(data: data, encoding: NSUTF8StringEncoding)
             if(err != nil) {
                 println(err!.localizedDescription)
             }
             else {
-                //this is where the error is printed
-                println(error)
-                var parseError : NSError?
                 // parse data
+                var parseError: NSError?
                 let unparsedArray: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parseError)
                 if let resp = unparsedArray as? NSDictionary {
-                    var d = resp["results"] as! NSArray
-                    var dict = d[0] as! NSDictionary
-                    println(dict["name"])
-                    println(dict["price"])
+                    let d = resp["results"] as! NSArray
+                    let dict = d[0] as! NSDictionary
+                    let name: AnyObject? = dict["name"]
+                    let price: AnyObject? = dict["price"]
+                    self.itemName = "\(name!)"
+                    self.itemPrice = "$ \(price!)"
                 }
             }
         })
@@ -103,7 +92,6 @@ class ScanItemViewController: RSCodeReaderViewController {
     }
     
     @IBAction func toggleLight(sender: AnyObject) {
-        println("You toggled the flash for scanning items in low-light conditions. Sneaky you!")
         self.toggleTorch()
         let on = UIImage(named: "flash2")
         let off = UIImage(named: "flash")
@@ -111,10 +99,12 @@ class ScanItemViewController: RSCodeReaderViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        flashBtn.image = UIImage(named: "flash")
         if segue.identifier == "presentAddItem" {
             if let navVC = segue.destinationViewController as? UINavigationController {
                 if let destVC = navVC.topViewController as? AddItemViewController {
-                    destVC.barcodeVal = self.barcodeVal
+                    destVC.itemName.text = self.itemName
+                    destVC.itemPrice.text = self.itemPrice
                 }
             }
         }

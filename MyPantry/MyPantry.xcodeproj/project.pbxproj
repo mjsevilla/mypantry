@@ -16,6 +16,7 @@
 		610C09631AF954C70061FDA3 /* MyPantryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610C09621AF954C70061FDA3 /* MyPantryTests.swift */; };
 		610C096D1AF963990061FDA3 /* PantryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610C096C1AF963990061FDA3 /* PantryListViewController.swift */; };
 		6132706B1B2645190051FADF /* MyPantry.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 613270691B2645190051FADF /* MyPantry.xcdatamodeld */; };
+		613270A01B26F4370051FADF /* PrepShoppingListItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6132709F1B26F4370051FADF /* PrepShoppingListItemsViewController.swift */; };
 		61CF8E051B06BA64005725A0 /* RSCode39Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF41B06BA64005725A0 /* RSCode39Generator.swift */; };
 		61CF8E061B06BA64005725A0 /* RSCode39Mod43Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF51B06BA64005725A0 /* RSCode39Mod43Generator.swift */; };
 		61CF8E071B06BA64005725A0 /* RSCode93Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF61B06BA64005725A0 /* RSCode93Generator.swift */; };
@@ -62,6 +63,7 @@
 		610C09621AF954C70061FDA3 /* MyPantryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPantryTests.swift; sourceTree = "<group>"; };
 		610C096C1AF963990061FDA3 /* PantryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryListViewController.swift; sourceTree = "<group>"; };
 		6132706A1B2645190051FADF /* MyPantry.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyPantry.xcdatamodel; sourceTree = "<group>"; };
+		6132709F1B26F4370051FADF /* PrepShoppingListItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrepShoppingListItemsViewController.swift; sourceTree = "<group>"; };
 		61CF8DF41B06BA64005725A0 /* RSCode39Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode39Generator.swift; sourceTree = "<group>"; };
 		61CF8DF51B06BA64005725A0 /* RSCode39Mod43Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode39Mod43Generator.swift; sourceTree = "<group>"; };
 		61CF8DF61B06BA64005725A0 /* RSCode93Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode93Generator.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				61DA8EF31B16885B00ED37B7 /* CategoryViewController.swift */,
 				610C096C1AF963990061FDA3 /* PantryListViewController.swift */,
 				610C094C1AF954C70061FDA3 /* PrepShoppingListViewController.swift */,
+				6132709F1B26F4370051FADF /* PrepShoppingListItemsViewController.swift */,
 				610C094E1AF954C70061FDA3 /* ScanItemViewController.swift */,
 				61CF8E181B0720E1005725A0 /* ShoppingListViewController.swift */,
 			);
@@ -328,6 +331,7 @@
 				61CF8E081B06BA64005725A0 /* RSCode128Generator.swift in Sources */,
 				61CF8E0E1B06BA64005725A0 /* RSExtendedCode39Generator.swift in Sources */,
 				610C096D1AF963990061FDA3 /* PantryListViewController.swift in Sources */,
+				613270A01B26F4370051FADF /* PrepShoppingListItemsViewController.swift in Sources */,
 				61CF8E101B06BA64005725A0 /* RSITF14Generator.swift in Sources */,
 				61CF8E051B06BA64005725A0 /* RSCode39Generator.swift in Sources */,
 				61CF8E071B06BA64005725A0 /* RSCode93Generator.swift in Sources */,

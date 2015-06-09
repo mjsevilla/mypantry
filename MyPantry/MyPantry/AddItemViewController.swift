@@ -20,7 +20,6 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UIPickerView
     var selectedCategory: NSManagedObject!
     var categoryTextField: UITextField!
     var origPrice = ""
-    var barcodeVal: String?
     var pickerData: [String] = []
     var tapGest: UITapGestureRecognizer!
     
