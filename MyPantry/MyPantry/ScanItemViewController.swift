@@ -26,19 +26,38 @@ class ScanItemViewController: RSCodeReaderViewController {
             if barcodes[0].stringValue != nil {
                 println("Barcode found: type=\(barcodes[0].type) value=\(barcodes[0].stringValue)")
                 
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.indicator.startAnimating()
-                    })
-                    
-                    self.semanticsAPICall(barcodes[0].stringValue.toInt()!)
-//                    self.session.stopRunning()
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.indicator.startAnimating()
+                })
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+                    self.session.stopRunning()
                     
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.session.stopRunning()
-//                        self.indicator.stopAnimating()
+                        self.semanticsAPICall(barcodes[0].stringValue.toInt()!)
+                        let delay = 0.9 * Double(NSEC_PER_SEC)
+                        var dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                        
+                        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                            self.performSegueWithIdentifier("presentAddItem", sender: self)
+                            self.indicator.stopAnimating()
+                        })
                     })
                 })
+                
+//                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+//                    dispatch_async(dispatch_get_main_queue(), {
+//                        self.indicator.startAnimating()
+//                    })
+//                    
+//                    self.semanticsAPICall(barcodes[0].stringValue.toInt()!)
+////                    self.session.stopRunning()
+//                    
+//                    dispatch_async(dispatch_get_main_queue(), {
+//                        self.session.stopRunning()
+//                        println("hi2")
+////                        self.indicator.stopAnimating()
+//                    })
+//                })
             }
         }
         
@@ -89,8 +108,8 @@ class ScanItemViewController: RSCodeReaderViewController {
 //                    })
                     println(self.itemName)
                     println(self.itemPrice)
-                    self.performSegueWithIdentifier("presentAddItem", sender: self)
-                    self.indicator.stopAnimating()
+//                    self.performSegueWithIdentifier("presentAddItem", sender: self)
+//                    self.indicator.stopAnimating()
                 }
             }
         })
