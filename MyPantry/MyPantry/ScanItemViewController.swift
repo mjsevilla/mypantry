@@ -41,6 +41,7 @@ class ScanItemViewController: RSCodeReaderViewController {
                     })
                     
                     self.barcodeVal = barcodes[0].stringValue
+                    //put API here??
                     self.session.stopRunning()
                     
                     dispatch_async(dispatch_get_main_queue(), {
@@ -63,6 +64,40 @@ class ScanItemViewController: RSCodeReaderViewController {
         if !self.hasTorch() {
             self.toggle.enabled = false
         }
+    }
+    
+    func semanticAPICall(barcodeVal: Int) {
+        var urlString = "https://api.semantics3.com/test/v1/products?q={\"upc\":70411576937}"
+        var esc = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+        var request = NSMutableURLRequest(URL: NSURL(string: esc!)!)
+        var response: NSURLResponse?
+        var error: NSErrorPointer = nil
+        var err: NSError?
+        
+        request.HTTPMethod = "GET"
+        request.addValue("SEM32047A91FE30E73559F6FD1C695F2727B", forHTTPHeaderField: "api_key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        var session = NSURLSession.sharedSession()
+        
+        var task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+            if(err != nil) {
+                println(err!.localizedDescription)
+            }
+            else {
+                //this is where the error is printed
+                println(error)
+                var parseError : NSError?
+                // parse data
+                let unparsedArray: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parseError)
+                println(parseError)
+                if let resp = unparsedArray as? NSDictionary {
+                    println(resp)
+                }
+            }
+        })
+        task.resume()
     }
     
     @IBAction func toggleLight(sender: AnyObject) {
