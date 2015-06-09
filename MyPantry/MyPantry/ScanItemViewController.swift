@@ -91,9 +91,11 @@ class ScanItemViewController: RSCodeReaderViewController {
                 var parseError : NSError?
                 // parse data
                 let unparsedArray: AnyObject? = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &parseError)
-                println(parseError)
                 if let resp = unparsedArray as? NSDictionary {
-                    println(resp)
+                    var d = resp["results"] as! NSArray
+                    var dict = d[0] as! NSDictionary
+                    println(dict["name"])
+                    println(dict["price"])
                 }
             }
         })
