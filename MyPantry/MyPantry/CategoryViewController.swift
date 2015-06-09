@@ -8,18 +8,20 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class CategoryViewController: UITableViewController {
-    var category: Category?
+    var category: NSManagedObject?
+    var items = [NSManagedObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = category?.name
+        self.title = category!.valueForKey("name") as? String
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            category?.items?.removeAtIndex(indexPath.row)
+//            category?.items?.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         }
     }
@@ -27,7 +29,7 @@ class CategoryViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ItemCell") as! UITableViewCell
         
-        cell.textLabel?.text = category!.items![indexPath.row]
+//        cell.textLabel?.text = category!.items![indexPath.row]
         
         return cell
     }
@@ -38,7 +40,8 @@ class CategoryViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return category!.items!.count
+        return 0
+//        return category!.items!.count
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

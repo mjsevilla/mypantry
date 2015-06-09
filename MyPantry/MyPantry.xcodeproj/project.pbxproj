@@ -15,6 +15,7 @@
 		610C09571AF954C70061FDA3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 610C09551AF954C70061FDA3 /* LaunchScreen.xib */; };
 		610C09631AF954C70061FDA3 /* MyPantryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610C09621AF954C70061FDA3 /* MyPantryTests.swift */; };
 		610C096D1AF963990061FDA3 /* PantryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610C096C1AF963990061FDA3 /* PantryListViewController.swift */; };
+		6132706B1B2645190051FADF /* MyPantry.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 613270691B2645190051FADF /* MyPantry.xcdatamodeld */; };
 		61CF8E051B06BA64005725A0 /* RSCode39Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF41B06BA64005725A0 /* RSCode39Generator.swift */; };
 		61CF8E061B06BA64005725A0 /* RSCode39Mod43Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF51B06BA64005725A0 /* RSCode39Mod43Generator.swift */; };
 		61CF8E071B06BA64005725A0 /* RSCode93Generator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8DF61B06BA64005725A0 /* RSCode93Generator.swift */; };
@@ -34,7 +35,6 @@
 		61CF8E151B06BA64005725A0 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E041B06BA64005725A0 /* UIColorExtension.swift */; };
 		61CF8E171B06BDFD005725A0 /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E161B06BDFD005725A0 /* AddItemViewController.swift */; };
 		61CF8E191B0720E1005725A0 /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61CF8E181B0720E1005725A0 /* ShoppingListViewController.swift */; };
-		61DA8EF11B16833900ED37B7 /* ModelObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DA8EF01B16833900ED37B7 /* ModelObjects.swift */; };
 		61DA8EF41B16885B00ED37B7 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DA8EF31B16885B00ED37B7 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +61,7 @@
 		610C09611AF954C70061FDA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		610C09621AF954C70061FDA3 /* MyPantryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPantryTests.swift; sourceTree = "<group>"; };
 		610C096C1AF963990061FDA3 /* PantryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryListViewController.swift; sourceTree = "<group>"; };
+		6132706A1B2645190051FADF /* MyPantry.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyPantry.xcdatamodel; sourceTree = "<group>"; };
 		61CF8DF41B06BA64005725A0 /* RSCode39Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode39Generator.swift; sourceTree = "<group>"; };
 		61CF8DF51B06BA64005725A0 /* RSCode39Mod43Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode39Mod43Generator.swift; sourceTree = "<group>"; };
 		61CF8DF61B06BA64005725A0 /* RSCode93Generator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSCode93Generator.swift; sourceTree = "<group>"; };
@@ -80,7 +81,6 @@
 		61CF8E041B06BA64005725A0 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		61CF8E161B06BDFD005725A0 /* AddItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
 		61CF8E181B0720E1005725A0 /* ShoppingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
-		61DA8EF01B16833900ED37B7 /* ModelObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelObjects.swift; sourceTree = "<group>"; };
 		61DA8EF31B16885B00ED37B7 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,9 +124,9 @@
 			isa = PBXGroup;
 			children = (
 				610C094A1AF954C70061FDA3 /* AppDelegate.swift */,
-				61DA8EF21B16834100ED37B7 /* Custom Classes */,
 				610C096E1AF9665C0061FDA3 /* View Controllers */,
 				610C09501AF954C70061FDA3 /* Main.storyboard */,
+				613270691B2645190051FADF /* MyPantry.xcdatamodeld */,
 				610C09531AF954C70061FDA3 /* Images.xcassets */,
 				610C09551AF954C70061FDA3 /* LaunchScreen.xib */,
 				61CF8DF11B06BA06005725A0 /* Frameworks */,
@@ -164,8 +164,8 @@
 			isa = PBXGroup;
 			children = (
 				61CF8E161B06BDFD005725A0 /* AddItemViewController.swift */,
-				610C096C1AF963990061FDA3 /* PantryListViewController.swift */,
 				61DA8EF31B16885B00ED37B7 /* CategoryViewController.swift */,
+				610C096C1AF963990061FDA3 /* PantryListViewController.swift */,
 				610C094C1AF954C70061FDA3 /* PrepShoppingListViewController.swift */,
 				610C094E1AF954C70061FDA3 /* ScanItemViewController.swift */,
 				61CF8E181B0720E1005725A0 /* ShoppingListViewController.swift */,
@@ -211,14 +211,6 @@
 				61CF8E041B06BA64005725A0 /* UIColorExtension.swift */,
 			);
 			name = Source;
-			sourceTree = "<group>";
-		};
-		61DA8EF21B16834100ED37B7 /* Custom Classes */ = {
-			isa = PBXGroup;
-			children = (
-				61DA8EF01B16833900ED37B7 /* ModelObjects.swift */,
-			);
-			name = "Custom Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,10 +314,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61DA8EF11B16833900ED37B7 /* ModelObjects.swift in Sources */,
 				61CF8E121B06BA64005725A0 /* RSUnifiedCodeGenerator.swift in Sources */,
 				61CF8E111B06BA64005725A0 /* RSITFGenerator.swift in Sources */,
 				61CF8E061B06BA64005725A0 /* RSCode39Mod43Generator.swift in Sources */,
+				6132706B1B2645190051FADF /* MyPantry.xcdatamodeld in Sources */,
 				61CF8E091B06BA64005725A0 /* RSCodeGenerator.swift in Sources */,
 				61CF8E191B0720E1005725A0 /* ShoppingListViewController.swift in Sources */,
 				610C094F1AF954C70061FDA3 /* ScanItemViewController.swift in Sources */,
@@ -556,6 +548,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		613270691B2645190051FADF /* MyPantry.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6132706A1B2645190051FADF /* MyPantry.xcdatamodel */,
+			);
+			currentVersion = 6132706A1B2645190051FADF /* MyPantry.xcdatamodel */;
+			path = MyPantry.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 610C093D1AF954C70061FDA3 /* Project object */;
 }
