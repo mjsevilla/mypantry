@@ -16,6 +16,8 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UIPickerView
     @IBOutlet weak var itemPrice: UILabel!
     @IBOutlet weak var categoryPicker: UIPickerView!
     @IBOutlet weak var categoryLabel: UILabel!
+    var itemNameText = ""
+    var itemPriceText = ""
     var categories = [NSManagedObject]()
     var selectedCategory: NSManagedObject!
     var categoryTextField: UITextField!
@@ -26,6 +28,8 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         self.fetchCategories("")
+        itemName.text = itemNameText
+        itemPrice.text = itemPriceText
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
         itemQuantity.delegate = self
         origPrice = itemPrice.text!

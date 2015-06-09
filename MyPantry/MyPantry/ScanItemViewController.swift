@@ -32,11 +32,11 @@ class ScanItemViewController: RSCodeReaderViewController {
                     })
                     
                     self.semanticsAPICall(barcodes[0].stringValue.toInt()!)
-                    self.session.stopRunning()
+//                    self.session.stopRunning()
                     
                     dispatch_async(dispatch_get_main_queue(), {
-                        self.indicator.stopAnimating()
-                        self.performSegueWithIdentifier("presentAddItem", sender: self)
+                        self.session.stopRunning()
+//                        self.indicator.stopAnimating()
                     })
                 })
             }
@@ -83,8 +83,14 @@ class ScanItemViewController: RSCodeReaderViewController {
                     let dict = d[0] as! NSDictionary
                     let name: AnyObject? = dict["name"]
                     let price: AnyObject? = dict["price"]
-                    self.itemName = "\(name!)"
-                    self.itemPrice = "$ \(price!)"
+//                    dispatch_async(dispatch_get_main_queue(), {
+                        self.itemName = "\(name!)"
+                        self.itemPrice = "$ \(price!)"
+//                    })
+                    println(self.itemName)
+                    println(self.itemPrice)
+                    self.performSegueWithIdentifier("presentAddItem", sender: self)
+                    self.indicator.stopAnimating()
                 }
             }
         })
@@ -103,8 +109,9 @@ class ScanItemViewController: RSCodeReaderViewController {
         if segue.identifier == "presentAddItem" {
             if let navVC = segue.destinationViewController as? UINavigationController {
                 if let destVC = navVC.topViewController as? AddItemViewController {
-                    destVC.itemName.text = self.itemName
-                    destVC.itemPrice.text = self.itemPrice
+                    println("hi")
+                    destVC.itemNameText = self.itemName
+                    destVC.itemPriceText = self.itemPrice
                 }
             }
         }
