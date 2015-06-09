@@ -36,10 +36,35 @@ class PrepShoppingListItemsViewController: UITableViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.fetchItems()
+        self.tableView.reloadData()
+    }
+    
+    // fetch items from core data
+    func fetchItems() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        let fetchRequest = NSFetchRequest(entityName: "Item")
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        var error: NSError?
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        
+        if let results = fetchedResults {
+            items = results
+            
+        }
+        else {
+            println("Could not fetch \(error), \(error!.userInfo)")
+        }
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PrepItemCell") as! UITableViewCell
         
-        cell.textLabel?.text = ""
+        cell.textLabel?.text = items[indexPath.row].valueForKey("name") as? String
         if cell.accessoryType == .Checkmark {
             numSelected++
         }

@@ -18,10 +18,12 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UIPickerView
     @IBOutlet weak var categoryLabel: UILabel!
     var itemNameText = ""
     var itemPriceText = ""
+    var origPrice = ""
     var categories = [NSManagedObject]()
     var selectedCategory: NSManagedObject!
+    var items = [NSManagedObject]()
+    var newItem: NSManagedObject!
     var categoryTextField: UITextField!
-    var origPrice = ""
     var pickerData: [String] = []
     var tapGest: UITapGestureRecognizer!
     
@@ -30,9 +32,8 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UIPickerView
         self.fetchCategories("")
         itemName.text = itemNameText
         itemPrice.text = itemPriceText
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
+        origPrice = itemPriceText
         itemQuantity.delegate = self
-        origPrice = itemPrice.text!
         categoryPicker.dataSource = self
         categoryPicker.delegate = self
         categoryPicker.hidden = true
@@ -41,25 +42,45 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UIPickerView
         categoryLabel.addGestureRecognizer(tapGest)
     }
     
-    func keyboardWillHide(sender: NSNotification) {
-        if itemQuantity.text == "" {
-            itemQuantity.text = "1"
-            itemPrice.text = origPrice
-        }
-    }
-    
     func textFieldDidEndEditing(textField: UITextField) {
         let price = itemPrice.text!
         let justPrice = "\(dropFirst(dropFirst(price)))"
         let justPriceD = (justPrice as NSString).doubleValue
         let q = Double(itemQuantity.text!.toInt()!)
         
-        itemPrice.text = "$ \(Double(round(100*(justPriceD*q))/100))"
+        if textField.text == "1" {
+            itemPrice.text = "\(origPrice)"
+        }
+        else {
+            itemPrice.text = "$ \(Double(round(100*(justPriceD*q))/100))"
+        }
     }
     
     @IBAction func addItemToCategory(sender: AnyObject) {
-//        selectedCategory.set
+        saveItem(itemNameText, quantity: itemQuantity.text.toInt()!, price: itemPrice.text!)
         performSegueWithIdentifier("presentCategoryFromAdd", sender: self)
+    }
+    
+    // save item to Core Data
+    func saveItem(name: String, quantity: Int, price: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        let entity =  NSEntityDescription.entityForName("Item", inManagedObjectContext: managedContext)
+        let item = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+        var error: NSError?
+        
+        item.setValue(name, forKey: "name")
+        item.setValue(quantity, forKey: "quantity")
+        item.setValue(price, forKey: "price")
+        item.setValue(selectedCategory, forKey: "category")
+        selectedCategory.setValue(NSOrderedSet(object: item), forKey: "item")
+        if !managedContext.save(&error) {
+            println("Could not save \(error), \(error?.userInfo)")
+        }
+        else {
+            items.append(item)
+            self.fetchCategories("")
+        }
     }
     
     func selectCategory(sender: AnyObject) {
@@ -123,6 +144,7 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UIPickerView
             println("Could not save \(error), \(error?.userInfo)")
         }
         else {
+            selectedCategory = category
             categories.append(category)
             self.fetchCategories("")
         }
@@ -172,8 +194,8 @@ class AddItemViewController: UIViewController, UITextFieldDelegate, UIPickerView
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "presentCategoryFromAdd" {
-            if let destVC = segue.destinationViewController as? PantryListViewController {
-                
+            if let destVC = segue.destinationViewController as? CategoryViewController {
+                destVC.category = self.selectedCategory
             }
         }
     }

@@ -24,8 +24,6 @@ class ScanItemViewController: RSCodeReaderViewController {
         self.tabBarController?.tabBar.hidden = false
         self.barcodesHandler = { barcodes in
             if barcodes[0].stringValue != nil {
-                println("Barcode found: type=\(barcodes[0].type) value=\(barcodes[0].stringValue)")
-                
                 dispatch_async(dispatch_get_main_queue(), {
                     self.indicator.startAnimating()
                 })
@@ -34,8 +32,8 @@ class ScanItemViewController: RSCodeReaderViewController {
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         self.semanticsAPICall(barcodes[0].stringValue.toInt()!)
-                        let delay = 0.9 * Double(NSEC_PER_SEC)
-                        var dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+                        let delay = 1.5 * Double(NSEC_PER_SEC)
+                        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
                         
                         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
                             self.performSegueWithIdentifier("presentAddItem", sender: self)
@@ -43,21 +41,6 @@ class ScanItemViewController: RSCodeReaderViewController {
                         })
                     })
                 })
-                
-//                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-//                    dispatch_async(dispatch_get_main_queue(), {
-//                        self.indicator.startAnimating()
-//                    })
-//                    
-//                    self.semanticsAPICall(barcodes[0].stringValue.toInt()!)
-////                    self.session.stopRunning()
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), {
-//                        self.session.stopRunning()
-//                        println("hi2")
-////                        self.indicator.stopAnimating()
-//                    })
-//                })
             }
         }
         
@@ -84,7 +67,7 @@ class ScanItemViewController: RSCodeReaderViewController {
         let session = NSURLSession.sharedSession()
         
         request.HTTPMethod = "GET"
-        request.addValue("SEM32047A91FE30E73559F6FD1C695F2727B", forHTTPHeaderField: "api_key")
+        request.addValue("SEM3E9C7DEC6BFCC4C94C0663BE5AFDDF611", forHTTPHeaderField: "api_key")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
@@ -102,14 +85,8 @@ class ScanItemViewController: RSCodeReaderViewController {
                     let dict = d[0] as! NSDictionary
                     let name: AnyObject? = dict["name"]
                     let price: AnyObject? = dict["price"]
-//                    dispatch_async(dispatch_get_main_queue(), {
-                        self.itemName = "\(name!)"
-                        self.itemPrice = "$ \(price!)"
-//                    })
-                    println(self.itemName)
-                    println(self.itemPrice)
-//                    self.performSegueWithIdentifier("presentAddItem", sender: self)
-//                    self.indicator.stopAnimating()
+                    self.itemName = "\(name!)"
+                    self.itemPrice = "$ \(price!)"
                 }
             }
         })
@@ -128,7 +105,6 @@ class ScanItemViewController: RSCodeReaderViewController {
         if segue.identifier == "presentAddItem" {
             if let navVC = segue.destinationViewController as? UINavigationController {
                 if let destVC = navVC.topViewController as? AddItemViewController {
-                    println("hi")
                     destVC.itemNameText = self.itemName
                     destVC.itemPriceText = self.itemPrice
                 }
